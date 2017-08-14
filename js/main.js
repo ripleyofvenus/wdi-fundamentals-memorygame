@@ -1,4 +1,4 @@
-console.log('up and running!');
+console.log("up and running!");
 var cards = [
  {
 	rank: "queen",
@@ -23,6 +23,17 @@ var cards = [
 ];
 
 var cardsInPlay = [];
+/*Creates the card images and listens for when the user
+clicks on a card*/
+var createBoard = function(){
+	for (var i = 0; i < cards.length; i++){
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
+	};
+};
 
 //save the flipped cards into the holder Array.
 var flipCard = function(){
@@ -35,17 +46,6 @@ var flipCard = function(){
 	checkForMatch();
 };
 
-/*Creates the card images and listens for when the user
-clicks on a card*/
-var createBoard = function(){
-	for (var i = 0; i < cards.length; i++){
-		var cardElement = document.createElement('img');
-		cardElement.setAttribute('src', 'images/back.png');
-		cardElement.setAttribute('data-id', i);
-		cardElement.addEventListener('click', flipCard);
-		document.getElementById('game-board').appendChild(cardElement);
-	};
-};
 
 //Check that the holder Array contains two cards. Also, alerts results.
 var checkForMatch = function(){
